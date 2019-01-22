@@ -29,8 +29,6 @@
   },
   "homepage": "https://github.com/jeetiss/image-fns#readme",
   "devDependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/preset-env": "^7.1.0",
     "chai": "^4.2.0",
     "karma": "^3.1.1",
     "karma-chrome-launcher": "^2.2.0",
@@ -41,8 +39,11 @@
     "puppeteer": "^1.10.0",
     "rimraf": "^2.6.2",
     "rollup": "^0.66.6",
-    "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-node-resolve": "^3.4.0"
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-typescript": "^1.0.0",
+    "rollup-plugin-typescript2": "^0.19.2",
+    "tslib": "^1.9.3",
+    "typescript": "^3.2.4"
   }
 }
