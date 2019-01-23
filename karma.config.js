@@ -1,11 +1,9 @@
-const babel = require('rollup-plugin-babel')
+const typescript = require('rollup-plugin-typescript2')
 const resolve = require('rollup-plugin-node-resolve')
 const commonjs = require('rollup-plugin-commonjs')
-const path = require("path");
+const path = require('path')
 
 process.env.CHROME_BIN = require('puppeteer').executablePath()
-
-const pattern = path.join(__dirname, './tests/*.js')
 
 module.exports = function(config) {
   config.set({
@@ -13,21 +11,26 @@ module.exports = function(config) {
     frameworks: ['mocha'],
     singleRun: true,
 
-    files: [
-      {
-        pattern,
-        watched: false,
-      },
+    files: [{ pattern: 'tests/**.js' }],
+
+    plugins: [
+      'karma-rollup-preprocessor',
+      'karma-chrome-launcher',
+      'karma-mocha',
     ],
 
-    plugins: ['karma-chrome-launcher', 'karma-mocha', 'karma-rollup-preprocessor'],
+    preprocessors: {
+      'tests/**.js': ['rollup'],
+    },
 
-    preprocessors: {[pattern]: ['rollup']},
     rollupPreprocessor: {
       plugins: [
-        resolve({browser: true}),
-        commonjs({include: 'node_modules/**', namedExports: { 'chai': ['expect'] },}),
-        babel(),
+        resolve({ browser: true }),
+        commonjs({
+          include: 'node_modules/**',
+          namedExports: { chai: ['expect'] },
+        }),
+        typescript(),
       ],
       output: {
         format: 'iife',

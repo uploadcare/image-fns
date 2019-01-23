@@ -29,6 +29,8 @@
   },
   "homepage": "https://github.com/jeetiss/image-fns#readme",
   "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.5",
     "chai": "^4.2.0",
     "karma": "^3.1.1",
     "karma-chrome-launcher": "^2.2.0",
