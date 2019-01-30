@@ -4,6 +4,7 @@
   "description": "",
   "main": "dist/image-fns.cj.js",
   "module": "dist/image-fns.es.js",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
