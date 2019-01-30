@@ -1,13 +1,10 @@
+import ImageRepresentation from './image-representation'
 
-const nativeResize = ({
-  canvas: input,
-  width,
-  height,
-}: {
-  canvas: HTMLCanvasElement
-  width: number
+const nativeResize = (
+  input: ImageRepresentation,
+  width: number,
   height: number
-}) => {
+): ImageRepresentation => {
   const canvas = document.createElement('canvas')
   const cx = canvas.getContext('2d')
   canvas.width = width
@@ -15,7 +12,7 @@ const nativeResize = ({
 
   if (cx) {
     cx.imageSmoothingQuality = 'high'
-    cx.drawImage(input, 0, 0, width, height)
+    cx.drawImage(input.canvas, 0, 0, width, height)
   }
 
   return { canvas }

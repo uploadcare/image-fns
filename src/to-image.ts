@@ -1,14 +1,13 @@
-const toImage = ({
-  canvas,
-  mime,
-}: {
-  canvas: HTMLCanvasElement
-  mime: string
-}) => {
-  const image = new Image()
-  image.src = canvas.toDataURL(mime)
+import ImageRepresentation from './image-representation'
 
-  return { image }
+const toImage = (
+  image: ImageRepresentation,
+  mime: string
+): HTMLImageElement => {
+  const realImage = new Image()
+  realImage.src = image.canvas.toDataURL(mime)
+
+  return realImage
 }
 
 export default toImage

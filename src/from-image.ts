@@ -1,4 +1,6 @@
-const fromImage = ({ image }: { image: HTMLImageElement }) => {
+import ImageRepresentation from './image-representation'
+
+const fromImage = (image: HTMLImageElement): ImageRepresentation => {
   const canvas = document.createElement('canvas')
   const cx = canvas.getContext('2d')
 

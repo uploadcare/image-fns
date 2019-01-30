@@ -1,13 +1,14 @@
+import ImageRepresentation from './image-representation'
 import fromImage from './from-image'
 
-const fromFile = (file: File) => {
+const fromFile = (file: File): Promise<ImageRepresentation> => {
   const url = URL.createObjectURL(file)
 
-  const imagePromise: Promise<{ image: HTMLImageElement }> = new Promise(
+  const imagePromise: Promise<HTMLImageElement> = new Promise(
     (resolve, reject) => {
       const image = new Image()
 
-      image.onload = () => resolve({ image })
+      image.onload = () => resolve(image)
       image.onerror = () => reject()
       image.src = url
     }
