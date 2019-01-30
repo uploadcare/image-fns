@@ -6,8 +6,7 @@ export default {
   output: [
     { file: pkg.main, format: 'cjs' },
     { file: pkg.module, format: 'es' },
+    { file: `dist/${pkg.name}.umd.js`, format: 'umd', name: 'imageFns' },
   ],
-  plugins: [
-    typescript(),
-  ],
+  plugins: [typescript()],
 }
