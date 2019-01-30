@@ -1,6 +1,7 @@
 import ImageRepresentation from './image-representation'
 
-const nativeResize = (
+/** Descrption */
+const nativeShrink = (
   input: ImageRepresentation,
   width: number,
   height: number
@@ -18,4 +19,4 @@ const nativeResize = (
   return { canvas }
 }
 
-export default nativeResize
+export default nativeShrink
