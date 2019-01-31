@@ -1,11 +1,10 @@
-import ImageRepresentation from './image-representation'
-
+ 
 /** Descrption */
 const nativeShrink = (
-  input: ImageRepresentation,
+  input: HTMLCanvasElement,
   width: number,
   height: number
-): ImageRepresentation => {
+): HTMLCanvasElement => {
   const canvas = document.createElement('canvas')
   const cx = canvas.getContext('2d')
   canvas.width = width
@@ -13,10 +12,10 @@ const nativeShrink = (
 
   if (cx) {
     cx.imageSmoothingQuality = 'high'
-    cx.drawImage(input.canvas, 0, 0, width, height)
+    cx.drawImage(input, 0, 0, width, height)
   }
 
-  return { canvas }
+  return canvas
 }
 
 export default nativeShrink

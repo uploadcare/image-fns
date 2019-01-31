@@ -1,13 +1,12 @@
-import ImageRepresentation from './image-representation'
-
+ 
 const toFile = (
-  image: ImageRepresentation,
+  canvas: HTMLCanvasElement,
   name: string,
   mime: string,
   quality: number
 ): Promise<File | null> => {
   const filePromise = new Promise<Blob | null>(resolve =>
-    image.canvas.toBlob(resolve, mime, quality)
+    canvas.toBlob(resolve, mime, quality)
   )
 
   return filePromise.then(blob => {

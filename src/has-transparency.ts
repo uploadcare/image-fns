@@ -1,6 +1,5 @@
-import ImageRepresentation from './image-representation'
-
-const hasTransparency = (input: ImageRepresentation) => {
+ 
+const hasTransparency = (input: HTMLCanvasElement) => {
   const pcsn = 50
 
   const canvas = document.createElement('canvas')
@@ -10,7 +9,7 @@ const hasTransparency = (input: ImageRepresentation) => {
   let transparency = false
 
   if (ctx) {
-    ctx.drawImage(input.canvas, 0, 0, pcsn, pcsn)
+    ctx.drawImage(input, 0, 0, pcsn, pcsn)
     const data = ctx.getImageData(0, 0, pcsn, pcsn).data
     canvas.width = canvas.height = 1
 

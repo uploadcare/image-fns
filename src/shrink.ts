@@ -1,7 +1,6 @@
-import ImageRepresentation from './image-representation'
-
-function protect(img: ImageRepresentation): ImageRepresentation {
-  const ratio = img.canvas.width / img.canvas.height
+ 
+function protect(img: HTMLCanvasElement): HTMLCanvasElement {
+  const ratio = img.width / img.height
 
   const maxSquare = 5000000 // ios max canvas square
   const maxSize = 4096 // ie max canvas dimensions
@@ -19,38 +18,38 @@ function protect(img: ImageRepresentation): ImageRepresentation {
     maxW = Math.round(ratio * maxH)
   }
 
-  if (img.canvas.width > maxW) {
+  if (img.width > maxW) {
     const canvas = document.createElement('canvas')
     canvas.width = maxW
     canvas.height = maxH
     const ctx = canvas.getContext('2d')
     if (ctx) {
-      ctx.drawImage(img.canvas, 0, 0, maxW, maxH)
+      ctx.drawImage(img, 0, 0, maxW, maxH)
     }
 
-    return { canvas }
+    return canvas
   }
 
   return img
 }
 
-function shrinkTo(input: ImageRepresentation, w: number, h: number) {
+function shrinkTo(input: HTMLCanvasElement, w: number, h: number) {
   const canvas = document.createElement('canvas')
 
   canvas.width = w
   canvas.height = h
   const ctx = canvas.getContext('2d')
   if (ctx) {
-    ctx.drawImage(input.canvas, 0, 0, w, h)
+    ctx.drawImage(input, 0, 0, w, h)
   }
 
-  return { canvas }
+  return canvas
 }
 
-function shrink(image: ImageRepresentation, widht: number, height: number) {
+function shrink(image: HTMLCanvasElement, widht: number, height: number) {
   let result = protect(image)
 
-  let steps = Math.ceil(Math.log2(result.canvas.width / widht))
+  let steps = Math.ceil(Math.log2(result.width / widht))
   let sW = widht * Math.pow(2, steps - 1)
   let sH = height * Math.pow(2, steps - 1)
   const x = 2

@@ -1,6 +1,5 @@
-import ImageRepresentation from './image-representation'
-
-const fromImage = (image: HTMLImageElement): ImageRepresentation => {
+ 
+const fromImage = (image: HTMLImageElement): HTMLCanvasElement => {
   const canvas = document.createElement('canvas')
   const cx = canvas.getContext('2d')
 
@@ -11,7 +10,7 @@ const fromImage = (image: HTMLImageElement): ImageRepresentation => {
     cx.drawImage(image, 0, 0, image.naturalWidth, image.naturalHeight)
   }
 
-  return { canvas }
+  return canvas
 }
 
 export default fromImage
