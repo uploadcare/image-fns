@@ -1,27 +1,18 @@
-type ImageMimeTypes =
-  | 'image/jpeg'
-  | 'image/webp'
-  | 'image/png'
-  | 'image/tiff'
-  | 'image/gif'
-  | 'image/vnd.microsoft.icon'
-
-const MIME_TIPES: { [key: string]: ImageMimeTypes } = {
-  jpeg: 'image/jpeg',
-  webp: 'image/webp',
-  png: 'image/png',
-  tiff: 'image/tiff',
-  gif: 'image/gif',
-  ico: 'image/vnd.microsoft.icon',
+const MIME_TIPES = {
+  peg: 'image/jpeg' as 'image/jpeg',
+  webp: 'image/webp' as 'image/webp',
+  png: 'image/png' as 'image/png',
+  tiff: 'image/tiff' as 'image/tiff',
+  gif: 'image/gif' as 'image/gif',
+  ico: 'image/vnd.microsoft.icon' as 'image/vnd.microsoft.icon',
 }
 
-type Formats = 'jpeg' | 'webp' | 'png' | 'tiff' | 'gif' | 'ico'
+type Formats = keyof typeof MIME_TIPES
+type ImageMimeTypes = (typeof MIME_TIPES)[Formats]
 
 let supportedFormats: Promise<Formats[]> | null = null
 
-const keys = <V>(obj: { [key: string]: V }) => Object.keys(obj)
-const values = <V>(obj: { [key: string]: V }) =>
-  Object.keys(obj).map(key => obj[key])
+const keys = <K extends string>(obj: { [key: string]: any }) => Object.keys(obj) as K[]
 
 const getSupportedFormats = () => {
   if (supportedFormats) {
@@ -41,7 +32,7 @@ const getSupportedFormats = () => {
   }
 
   supportedFormats = Promise.all(
-    Object.keys(MIME_TIPES).map(format =>
+    keys<Formats>(MIME_TIPES).map(format =>
       new Promise(resolve =>
         canvas.toBlob(
           blobCallback(resolve, MIME_TIPES[format]),
@@ -51,12 +42,12 @@ const getSupportedFormats = () => {
     )
   )
     .then(indexesOfSupportedMimeTypes =>
-      Promise.all([keys(MIME_TIPES), indexesOfSupportedMimeTypes])
+      Promise.all([keys<Formats>(MIME_TIPES), indexesOfSupportedMimeTypes])
     )
     .then(([keysOfSupportedMimeTypes, indexesOfSupportedMimeTypes]) =>
       indexesOfSupportedMimeTypes
         .map((suppored, index) =>
-          suppored ? <Formats>keysOfSupportedMimeTypes[index] : null
+          suppored ? keysOfSupportedMimeTypes[index] : null
         )
         .filter((value: Formats | null): value is Formats => value !== null)
     )
