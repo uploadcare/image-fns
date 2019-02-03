@@ -1,13 +1,10 @@
- 
+import createCanvas from './create-canvas'
+
 const fromImage = (image: HTMLImageElement): HTMLCanvasElement => {
-  const canvas = document.createElement('canvas')
-  const cx = canvas.getContext('2d')
+  const { canvas, ctx } = createCanvas(image.naturalWidth, image.naturalHeight)
 
-  canvas.width = image.naturalWidth
-  canvas.height = image.naturalHeight
-
-  if (cx) {
-    cx.drawImage(image, 0, 0, image.naturalWidth, image.naturalHeight)
+  if (ctx) {
+    ctx.drawImage(image, 0, 0, image.naturalWidth, image.naturalHeight)
   }
 
   return canvas

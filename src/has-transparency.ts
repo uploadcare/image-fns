@@ -1,10 +1,8 @@
- 
+import createCanvas from './create-canvas'
+
 const hasTransparency = (input: HTMLCanvasElement) => {
   const pcsn = 50
-
-  const canvas = document.createElement('canvas')
-  canvas.width = canvas.height = pcsn
-  const ctx = canvas.getContext('2d')
+  const {canvas, ctx} = createCanvas(pcsn, pcsn)
 
   let transparency = false
 

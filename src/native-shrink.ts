@@ -1,18 +1,16 @@
- 
+import createCanvas from './create-canvas'
+
 /** Descrption */
 const nativeShrink = (
   input: HTMLCanvasElement,
   width: number,
   height: number
 ): HTMLCanvasElement => {
-  const canvas = document.createElement('canvas')
-  const cx = canvas.getContext('2d')
-  canvas.width = width
-  canvas.height = height
+  const { canvas, ctx } = createCanvas(width, height)
 
-  if (cx) {
-    cx.imageSmoothingQuality = 'high'
-    cx.drawImage(input, 0, 0, width, height)
+  if (ctx) {
+    ctx.imageSmoothingQuality = 'high'
+    ctx.drawImage(input, 0, 0, width, height)
   }
 
   return canvas

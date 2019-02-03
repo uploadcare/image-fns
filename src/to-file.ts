@@ -1,4 +1,4 @@
-import { Formats, MIME_TIPES } from './supported-formats'
+import { Formats, getMimeType } from './supported-formats'
 
 const toFile = (
   canvas: HTMLCanvasElement,
@@ -9,7 +9,7 @@ const toFile = (
   } = {}
 ): Promise<File | null> => {
   const { name, format, quality } = options
-  const mime = format ? MIME_TIPES[format] || format : undefined
+  const mime = format ? getMimeType(format) : undefined
 
   const filePromise = new Promise<Blob | null>(resolve =>
     canvas.toBlob(resolve, mime, quality)

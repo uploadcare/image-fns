@@ -1,4 +1,5 @@
- 
+import createCanvas from './create-canvas'
+
 function protect(img: HTMLCanvasElement): HTMLCanvasElement {
   const ratio = img.width / img.height
 
@@ -19,10 +20,7 @@ function protect(img: HTMLCanvasElement): HTMLCanvasElement {
   }
 
   if (img.width > maxW) {
-    const canvas = document.createElement('canvas')
-    canvas.width = maxW
-    canvas.height = maxH
-    const ctx = canvas.getContext('2d')
+    const {canvas, ctx} = createCanvas(maxW, maxH)
     if (ctx) {
       ctx.drawImage(img, 0, 0, maxW, maxH)
     }
@@ -34,11 +32,7 @@ function protect(img: HTMLCanvasElement): HTMLCanvasElement {
 }
 
 function shrinkTo(input: HTMLCanvasElement, w: number, h: number) {
-  const canvas = document.createElement('canvas')
-
-  canvas.width = w
-  canvas.height = h
-  const ctx = canvas.getContext('2d')
+  const {canvas, ctx} = createCanvas(w, h)
   if (ctx) {
     ctx.drawImage(input, 0, 0, w, h)
   }

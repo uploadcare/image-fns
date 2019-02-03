@@ -1,5 +1,7 @@
+import createCanvas from './create-canvas'
+
 const MIME_TIPES = {
-  peg: 'image/jpeg' as 'image/jpeg',
+  jpeg: 'image/jpeg' as 'image/jpeg',
   webp: 'image/webp' as 'image/webp',
   png: 'image/png' as 'image/png',
   tiff: 'image/tiff' as 'image/tiff',
@@ -12,16 +14,18 @@ type ImageMimeTypes = (typeof MIME_TIPES)[Formats]
 
 let supportedFormats: Promise<Formats[]> | null = null
 
-const keys = <K extends string>(obj: { [key: string]: any }) => Object.keys(obj) as K[]
+const keys = <K extends string>(obj: { [key: string]: any }) =>
+  Object.keys(obj) as K[]
+
+const getMimeType = (format: string): string =>
+  MIME_TIPES[<Formats>format] || format
 
 const getSupportedFormats = () => {
   if (supportedFormats) {
     return supportedFormats
   }
 
-  const canvas = document.createElement('canvas')
-  canvas.width = 2
-  canvas.height = 1
+  const { canvas } = createCanvas(2, 1)
 
   const blobCallback = (resolve: Function, expectedMime: string) => (
     blob: Blob | null
@@ -56,4 +60,4 @@ const getSupportedFormats = () => {
 }
 
 export default getSupportedFormats
-export { getSupportedFormats, MIME_TIPES, ImageMimeTypes, Formats }
+export { getSupportedFormats, MIME_TIPES, ImageMimeTypes, Formats, getMimeType }
