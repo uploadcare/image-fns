@@ -10,11 +10,10 @@ Image-fns provides toolset for manipulating images in a browser
 
 <!-- toc -->
 
-- [Demo](#demo)
-- [Requirements](#requirements)
 - [Install](#install)
 - [Usage](#usage)
-- [Configuration](#configuration)
+  * [Simple example](#simple-example)
+  * [Async / await](#async--await)
 - [Security issues](#security-issues)
 - [Feedback](#feedback)
 
@@ -53,7 +52,7 @@ input.addEventListener('change', e =>
 const append = node => preview.appendChild(node)
 ```
 
-### With async await
+### Async / await
 
 ```js
 const convertToBetterFormat = async file => {
