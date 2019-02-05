@@ -1,0 +1,10 @@
+{
+  "private": true,
+  "scripts": {
+    "dev": "mdx-go ./src",
+    "docs": "mdx-go build ./src"
+  },
+  "devDependencies": {
+    "mdx-go": "^2.0.0-32"
+  }
+}
