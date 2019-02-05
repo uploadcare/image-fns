@@ -92,3 +92,8 @@ prior to any public disclosure.
 
 Issues and PRs are welcome. You can provide your feedback or drop us a support
 request at [hello@uploadcare.com][uc-email-hello].
+
+[badge-stack-img]: https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat
+[badge-stack-url]: https://stackshare.io/uploadcare/stacks/
+[uc-email-bounty]: mailto:bugbounty@uploadcare.com
+[uc-email-hello]: mailto:hello@uploadcare.com
