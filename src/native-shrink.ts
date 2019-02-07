@@ -1,6 +1,6 @@
 import createCanvas from './create-canvas'
 
-/** Descrption */
+/** Description */
 const nativeShrink = (
   input: HTMLCanvasElement,
   width: number,
