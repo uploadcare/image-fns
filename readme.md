@@ -7,6 +7,7 @@
 Image-fns provides toolset for manipulating images in a browser
 
 [![Uploadcare stack on StackShare][badge-stack-img]][badge-stack-url]
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fuploadcare%2Fimage-fns.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fuploadcare%2Fimage-fns?ref=badge_shield)
 
 <!-- toc -->
 
@@ -96,3 +97,7 @@ request at [hello@uploadcare.com][uc-email-hello].
 [badge-stack-url]: https://stackshare.io/uploadcare/stacks/
 [uc-email-bounty]: mailto:bugbounty@uploadcare.com
 [uc-email-hello]: mailto:hello@uploadcare.com
+
+
+## License
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fuploadcare%2Fimage-fns.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fuploadcare%2Fimage-fns?ref=badge_large)
