@@ -1,14 +1,14 @@
 import createCanvas from './create-canvas'
 
 const hasTransparency = (input: HTMLCanvasElement) => {
-  const pcsn = 50
-  const {canvas, ctx} = createCanvas(pcsn, pcsn)
+  const canvasSize = 50
+  const {canvas, context} = createCanvas(canvasSize, canvasSize)
 
   let transparency = false
 
-  if (ctx) {
-    ctx.drawImage(input, 0, 0, pcsn, pcsn)
-    const data = ctx.getImageData(0, 0, pcsn, pcsn).data
+  if (context) {
+    context.drawImage(input, 0, 0, canvasSize, canvasSize)
+    const data = context.getImageData(0, 0, canvasSize, canvasSize).data
     canvas.width = canvas.height = 1
 
     for (let i = 3; i < data.length; i += 4) {

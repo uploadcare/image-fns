@@ -6,11 +6,11 @@ const nativeShrink = (
   width: number,
   height: number
 ): HTMLCanvasElement => {
-  const { canvas, ctx } = createCanvas(width, height)
+  const { canvas, context } = createCanvas(width, height)
 
-  if (ctx) {
-    ctx.imageSmoothingQuality = 'high'
-    ctx.drawImage(input, 0, 0, width, height)
+  if (context) {
+    context.imageSmoothingQuality = 'high'
+    context.drawImage(input, 0, 0, width, height)
   }
 
   return canvas
