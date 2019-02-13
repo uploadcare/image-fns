@@ -74,7 +74,7 @@ const convertToBetterFormat = async file => {
 input.addEventListener('change', async e => {
   const file = await convertToBetterFormat(e.target.files[0])
 
-  sentToServer(file)
+  sendToServer(file)
 })
 ```
 
@@ -89,7 +89,7 @@ prior to any public disclosure.
 
 ## Feedback
 
-Issues and PRs are welcome. You can provide your feedback or drop us a support
+Issues and PR‘s are welcome. You can provide your feedback or drop us a support
 request at [hello@uploadcare.com][uc-email-hello].
 
 [badge-stack-img]: https://img.shields.io/badge/tech-stack-0690fa.svg?style=flat

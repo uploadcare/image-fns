@@ -3,12 +3,12 @@ import images from './fixtures'
 import { hasTransparency, fromDataUrl } from '../src/'
 
 describe('test for has transparency', () => {
-  it('tranparent png', () =>
+  it('transparent png', () =>
     fromDataUrl(images.transparent.png).then(canvas =>
       expect(hasTransparency(canvas)).to.equal(true)
     ))
 
-  it('tranparent webp', () =>
+  it('transparent webp', () =>
     fromDataUrl(images.transparent.webp).then(canvas =>
       expect(hasTransparency(canvas)).to.equal(true)
     ))

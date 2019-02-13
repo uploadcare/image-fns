@@ -4,7 +4,7 @@ import nativeShrink from '../src/native-shrink'
 import createCanvas from '../src/create-canvas'
 
 describe('test shrink', () => {
-  it('deafult test', () => {
+  it('default test', () => {
     const resizeFrom = 320
     const resizeTo = 100
     const { canvas } = createCanvas(resizeFrom, resizeFrom)
@@ -19,7 +19,7 @@ describe('test shrink', () => {
 })
 
 describe('test native-shrink', () => {
-  it('deafult test', () => {
+  it('default test', () => {
     const resizeFrom = 320
     const resizeTo = 100
     const { canvas } = createCanvas(resizeFrom, resizeFrom)
