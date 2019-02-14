@@ -9,7 +9,7 @@ describe('test shrink', () => {
     const resizeTo = 100
     const { canvas } = createCanvas(resizeFrom, resizeFrom)
 
-    const resized = shrink(canvas, resizeTo, resizeTo)
+    const resized = shrink(canvas, { width: resizeTo, height: resizeTo })
 
     expect(canvas.width).to.equal(resizeFrom)
     expect(canvas.height).to.equal(resizeFrom)
@@ -24,7 +24,7 @@ describe('test native-shrink', () => {
     const resizeTo = 100
     const { canvas } = createCanvas(resizeFrom, resizeFrom)
 
-    const resized = nativeShrink(canvas, resizeTo, resizeTo)
+    const resized = nativeShrink(canvas, { width: resizeTo, height: resizeTo })
 
     expect(canvas.width).to.equal(resizeFrom)
     expect(canvas.height).to.equal(resizeFrom)
