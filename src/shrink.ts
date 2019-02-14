@@ -20,7 +20,7 @@ function protect(img: HTMLCanvasElement): HTMLCanvasElement {
   }
 
   if (img.width > maxWidth) {
-    const {canvas, context} = createCanvas(maxWidth, maxHeight)
+    const { canvas, context } = createCanvas(maxWidth, maxHeight)
     if (context) {
       context.drawImage(img, 0, 0, maxWidth, maxHeight)
     }
@@ -32,7 +32,7 @@ function protect(img: HTMLCanvasElement): HTMLCanvasElement {
 }
 
 function shrinkTo(input: HTMLCanvasElement, w: number, h: number) {
-  const {canvas, context} = createCanvas(w, h)
+  const { canvas, context } = createCanvas(w, h)
   if (context) {
     context.drawImage(input, 0, 0, w, h)
   }
@@ -40,7 +40,11 @@ function shrinkTo(input: HTMLCanvasElement, w: number, h: number) {
   return canvas
 }
 
-function shrink(image: HTMLCanvasElement, width: number, height: number) {
+function shrink(
+  image: HTMLCanvasElement,
+  options: { width: number; height: number }
+) {
+  const { width, height } = options
   let result = protect(image)
 
   let steps = Math.ceil(Math.log2(result.width / width))

@@ -1,11 +1,13 @@
 import createCanvas from './create-canvas'
 
-/** Description */
 const nativeShrink = (
   input: HTMLCanvasElement,
-  width: number,
-  height: number
+  options: {
+    width: number
+    height: number
+  }
 ): HTMLCanvasElement => {
+  const { width, height } = options
   const { canvas, context } = createCanvas(width, height)
 
   if (context) {
