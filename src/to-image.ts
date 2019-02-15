@@ -2,8 +2,11 @@ import { Formats, getMimeType } from './supported-formats'
 
 const toImage = (
   canvas: HTMLCanvasElement,
-  format: Formats | string
+  options: {
+    format?: Formats | string
+  }
 ): HTMLImageElement => {
+  const { format } = options
   const realImage = new Image()
   const mime = getMimeType(format)
   realImage.src = canvas.toDataURL(mime)

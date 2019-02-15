@@ -17,8 +17,8 @@ let supportedFormats: Promise<Formats[]> | null = null
 const keys = <K extends string>(obj: { [key: string]: any }) =>
   Object.keys(obj) as K[]
 
-const getMimeType = (format: string): string =>
-  MIME_TYPES[<Formats>format] || format
+const getMimeType = (format?: string): string =>
+  MIME_TYPES[<Formats>format] || format || MIME_TYPES['png']
 
 const getSupportedFormats = () => {
   if (supportedFormats) {

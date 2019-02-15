@@ -1,4 +1,4 @@
- import fromImage from './from-image'
+import fromImage from './from-image'
 
 const fromFile = (file: File): Promise<HTMLCanvasElement> => {
   const url = URL.createObjectURL(file)
@@ -13,9 +13,20 @@ const fromFile = (file: File): Promise<HTMLCanvasElement> => {
     }
   )
 
-  // const pipe = (value) => URL.revokeObjectURL(url)
+  return imagePromise
+    .then(
+      image => {
+        URL.revokeObjectURL(url)
 
-  return imagePromise.then(fromImage)
+        return image
+      },
+      error => {
+        URL.revokeObjectURL(url)
+
+        throw error
+      }
+    )
+    .then(fromImage)
 }
 
 export default fromFile
