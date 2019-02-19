@@ -9,7 +9,7 @@ const toFile = (
   } = {}
 ): Promise<File | null> => {
   const { name, format, quality } = options
-  const mime = format ? getMimeType(format) : undefined
+  const mime = getMimeType(format)
 
   const filePromise = new Promise<Blob | null>(resolve =>
     canvas.toBlob(resolve, mime, quality)
