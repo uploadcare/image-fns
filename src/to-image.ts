@@ -4,7 +4,7 @@ const toImage = (
   canvas: HTMLCanvasElement,
   options: {
     format?: Formats | string
-  }
+  } = {}
 ): HTMLImageElement => {
   const { format } = options
   const realImage = new Image()

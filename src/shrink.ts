@@ -1,4 +1,7 @@
 import createCanvas from './create-canvas'
+import MicroTasks from './task-queue'
+
+const runner = MicroTasks()
 
 function protect(img: HTMLCanvasElement): HTMLCanvasElement {
   const ratio = img.width / img.height
@@ -37,7 +40,7 @@ function shrinkTo(input: HTMLCanvasElement, w: number, h: number) {
     context.drawImage(input, 0, 0, w, h)
   }
 
-  return canvas
+  return Promise.resolve(canvas)
 }
 
 function shrink(
@@ -52,15 +55,29 @@ function shrink(
   let shrinkHeight = height * Math.pow(2, steps - 1)
   const x = 2
 
-  while (true) {
-    if (!steps--) {
-      return result
-    }
+  let promise: Promise<[HTMLCanvasElement, number, number]> = Promise.resolve([
+    result,
+    shrinkWidth,
+    shrinkHeight,
+  ] as [HTMLCanvasElement, number, number])
 
-    result = shrinkTo(result, shrinkWidth, shrinkHeight)
-    shrinkWidth = Math.round(shrinkWidth / x)
-    shrinkHeight = Math.round(shrinkHeight / x)
+  const lil = ([canvas, width, height]: [HTMLCanvasElement, number, number]) =>
+    runner.add(() =>
+      shrinkTo(canvas, width, height).then(
+        canva =>
+          [canva, Math.round(width / x), Math.round(height / x)] as [
+            HTMLCanvasElement,
+            number,
+            number
+          ]
+      )
+    )
+
+  for (let i = 0; i < steps; ++i) {
+    promise = promise.then(lil)
   }
+
+  return promise.then(([canvas]) => canvas)
 }
 
 export default shrink
