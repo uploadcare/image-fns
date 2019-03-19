@@ -3,7 +3,7 @@ import createCanvas from './create-canvas'
 function protect(img: HTMLCanvasElement): HTMLCanvasElement {
   const ratio = img.width / img.height
 
-  const maxSquare = 5000000 // ios max canvas square
+  const maxSquare = 16777216 // ios max canvas square
   const maxSize = 4096 // ie max canvas dimensions
 
   let maxWidth = Math.floor(Math.sqrt(maxSquare * ratio))
