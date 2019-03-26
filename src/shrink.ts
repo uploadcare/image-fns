@@ -2,22 +2,9 @@ import createCanvas from './create-canvas'
 
 function protect(img: HTMLCanvasElement): HTMLCanvasElement {
   const ratio = img.width / img.height
-
   const maxSquare = 16777216 // ios max canvas square
-  const maxSize = 4096 // ie max canvas dimensions
-
-  let maxWidth = Math.floor(Math.sqrt(maxSquare * ratio))
-  let maxHeight = Math.floor(maxSquare / Math.sqrt(maxSquare * ratio))
-
-  if (maxWidth > maxSize) {
-    maxWidth = maxSize
-    maxHeight = Math.round(maxWidth / ratio)
-  }
-
-  if (maxHeight > maxSize) {
-    maxHeight = maxSize
-    maxWidth = Math.round(ratio * maxHeight)
-  }
+  const maxWidth = Math.floor(Math.sqrt(maxSquare * ratio))
+  const maxHeight = Math.floor(maxSquare / Math.sqrt(maxSquare * ratio))
 
   if (img.width > maxWidth) {
     const { canvas, context } = createCanvas(maxWidth, maxHeight)
