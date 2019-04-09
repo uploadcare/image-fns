@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## Unreleased
 
 * increase iOS canvas maximum size
+* remove IE mobile canvas dimensions
 
 ## 1.0.0-alpha
 
